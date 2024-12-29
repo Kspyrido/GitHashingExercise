@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Enter 4-digit input:"
+read input
+
+if [[ ! "$input" =~ ^[0-9]{4}$ ]]; then
+    echo "Error: Input must be a 4 digits long"
+    exit 1
+fi
+
+echo -n "$input" | sha256sum | awk '{print $1}' > hash_output.txt
+
+echo "4-digit input transformed into a hash"
